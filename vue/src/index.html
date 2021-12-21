@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span><router-link to="/login">登录</router-link></span>
+    <span><router-link to="/list">列表</router-link></span>
+    <hr/>
+    <div>
+        <router-view></router-view>
+    </div>
+</div>
+</body>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vue-router/dist/vue-router.js"></script><!--导入路由-->
+<script src="user/login.js"></script>
+<script src="user/list.js"></script>
+<script type="text/javascript">
+    const router = new VueRouter({
+       routes:[
+           {
+               path:"/login",
+               component:loginForm
+           },
+           {
+               path:"/list",
+               component: listForm
+           }
+       ]
+    });
+
+    var app = new Vue({
+        el:"#app",
+        components:{
+            loginForm,
+            listForm
+        },
+        router
+    });
+</script>
+</html>
